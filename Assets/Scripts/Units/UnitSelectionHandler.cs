@@ -85,6 +85,10 @@ public class UnitSelectionHandler : MonoBehaviour
 
         foreach (var unit in player.GetMyUnits())
         {
+            if (selectedUnits.Contains(unit))
+            {
+                continue;
+            }
             Vector3 screenPosition = mainCamera.WorldToScreenPoint(unit.transform.position);
 
             if (screenPosition.x > min.x && screenPosition.x < max.x && screenPosition.y > min.y && screenPosition.y < max.y)
@@ -100,11 +104,16 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private void StartSelectionArea()
     {
-        foreach (var selectedUnit in selectedUnits)
+        // If we are not holding shift then we can deselect the non selected units
+        if (!Keyboard.current.leftShiftKey.isPressed)
         {
-            selectedUnit.Deselect();
+            foreach (var selectedUnit in selectedUnits)
+            {
+                selectedUnit.Deselect();
+            }
+            selectedUnits.Clear();
         }
-        selectedUnits.Clear();
+        
 
         unitSelectionArea.gameObject.SetActive(true);
 

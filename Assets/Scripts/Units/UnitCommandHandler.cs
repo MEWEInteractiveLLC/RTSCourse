@@ -9,6 +9,8 @@ public class UnitCommandHandler : MonoBehaviour
     [SerializeField] private UnitSelectionHandler unitSelectionHandler;
     [SerializeField] private LayerMask layerMask = new LayerMask();
     private Camera mainCamera;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,14 +33,41 @@ public class UnitCommandHandler : MonoBehaviour
         {
             return;
         }
-        
 
+
+        if (hit.collider.TryGetComponent(out Targetable newTarget))
+        {
+            Debug.Log("Entering the check for Targetable Items");
+            if (newTarget.hasAuthority)
+            {
+                TryMove(hit.point);
+                Debug.Log("Trying to move");
+                return;
+            }
+
+            TryToTarget(newTarget);
+            Debug.Log("Trying to target the TARGET");
+            return;
+        }
+        
         TryMove(hit.point);
+        Debug.Log(" All failed, Trying to move");
+       
+        
 
 
     }
 
- 
+    private void TryToTarget(Targetable inTarget)
+    {
+        
+        foreach (Unit unit in unitSelectionHandler.selectedUnits)
+        {
+            unit.GetTargeter.CmdSetTarget(inTarget.gameObject);
+        }
+    }
+
+
     private void TryMove(Vector3 hitInfoPoint)
     {
         

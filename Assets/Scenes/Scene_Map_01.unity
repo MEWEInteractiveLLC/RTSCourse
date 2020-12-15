@@ -307,7 +307,7 @@ MonoBehaviour:
   unitSelectionHandler: {fileID: 196326362}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
 --- !u!1 &270329126
 GameObject:
   m_ObjectHideFlags: 0

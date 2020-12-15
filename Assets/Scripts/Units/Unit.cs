@@ -7,9 +7,15 @@ using UnityEngine.Events;
 
 public class Unit : NetworkBehaviour
 {
+      [Header("PROPERTIES")]
+      [SerializeField] private UnitMovement unitMovement = null;
+      [SerializeField] private Targeter targeter = null;
+
+      [Header("EVENTS")]
       [SerializeField] private UnityEvent onSelected = null;
       [SerializeField] private UnityEvent onDeselected = null;
-      [SerializeField] private UnitMovement unitMovement = null;
+     
+      public Targeter GetTargeter => targeter;
 
       #region EVENTS
 

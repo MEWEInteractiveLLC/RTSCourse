@@ -374,6 +374,10 @@
           <e p="Buildings" t="Include">
             <e p="UnitSpawner.cs" t="Include" />
           </e>
+          <e p="Combat" t="Include">
+            <e p="Targetable.cs" t="Include" />
+            <e p="Targeter.cs" t="Include" />
+          </e>
           <e p="Networking" t="Include">
             <e p="RTSNetworkManager.cs" t="Include" />
             <e p="RTSPlayer.cs" t="Include" />
