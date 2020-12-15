@@ -376,9 +376,11 @@
           </e>
           <e p="Networking" t="Include">
             <e p="RTSNetworkManager.cs" t="Include" />
+            <e p="RTSPlayer.cs" t="Include" />
           </e>
           <e p="Units" t="Include">
             <e p="Unit.cs" t="Include" />
+            <e p="UnitCommandHandler.cs" t="Include" />
             <e p="UnitMovement.cs" t="Include" />
             <e p="UnitSelectionHandler.cs" t="Include" />
           </e>
